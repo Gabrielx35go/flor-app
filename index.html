@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido</title>
+<style>
+body{
+margin:0;
+font-family:-apple-system, sans-serif;
+background:#fff5f8;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
+color:#3A1F28;
+}
+
+h1{font-size:28px;margin-bottom:10px;}
+p{opacity:.6;margin-bottom:30px;}
+
+.lotus{
+position:relative;
+width:220px;
+height:220px;
+}
+
+.petal{
+position:absolute;
+width:80px;
+height:120px;
+background:linear-gradient(#f5c6d6,#d48fa3);
+border-radius:50% 50% 50% 50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+color:white;
+text-align:center;
+cursor:pointer;
+transition:.4s;
+}
+
+.petal:hover{
+transform:scale(1.1);
+}
+
+.petal.active{
+transform:scale(1.3);
+z-index:10;
+}
+
+.p1{top:0; left:70px;}
+.p2{top:40px; right:0;}
+.p3{bottom:0; right:40px;}
+.p4{bottom:0; left:40px;}
+.p5{top:40px; left:0;}
+.p6{top:20px; left:70px; transform:rotate(180deg);}
+
+.panel{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:white;
+border-radius:20px 20px 0 0;
+padding:20px;
+box-shadow:0 -10px 30px rgba(0,0,0,.1);
+display:none;
+}
+
+.panel.active{
+display:block;
+}
+
+input,textarea{
+width:100%;
+margin-top:10px;
+padding:10px;
+border-radius:10px;
+border:1px solid #eee;
+}
+
+button{
+margin-top:10px;
+padding:10px;
+width:100%;
+border:none;
+background:#d48fa3;
+color:white;
+border-radius:10px;
+font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<h1>Pedido</h1>
+<p>Seu jardim de tópicos</p>
+
+<div class="lotus">
+<div class="petal p1" onclick="openPanel('Lugar')">Lugar</div>
+<div class="petal p2" onclick="openPanel('Aliança')">Aliança</div>
+<div class="petal p3" onclick="openPanel('Caixa')">Caixa</div>
+<div class="petal p4" onclick="openPanel('Buquê')">Buquê</div>
+<div class="petal p5" onclick="openPanel('Surpresas')">Surpresas</div>
+<div class="petal p6" onclick="openPanel('Extras')">Extras</div>
+</div>
+
+<div class="panel" id="panel">
+<h3 id="title"></h3>
+<input placeholder="Link">
+<input placeholder="Valor">
+<textarea placeholder="Anotações"></textarea>
+<button onclick="closePanel()">Salvar</button>
+</div>
+
+<script>
+function openPanel(name){
+document.getElementById("panel").classList.add("active");
+document.getElementById("title").innerText=name;
+}
+
+function closePanel(){
+document.getElementById("panel").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
